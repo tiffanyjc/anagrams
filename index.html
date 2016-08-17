@@ -3,35 +3,54 @@
 
 <!-- Linking to separate CSS and JS -->
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="animate.min.css">
 <script src="js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <head>
-    <!--
-<script src="https://use.typekit.net/qbt6lbi.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
--->
-<title>Are they anagrams?</title>
+    <title>Are they anagrams?</title>
 </head>
 
 <center>
-    <h2 id="feedback" class="animated tada">Are they anagrams?</h2>
+    <h2 id="feedback" class="animation">Are they anagrams?</h2>
 </center>
 
 <input id="string1" type="text" name="string1" placeholder="First string" onchange="validate()"> 
 <input id="string2" type="text" name="string2" placeholder="Second string" onchange="validate()"> 
 
 
-<button id="buttonAnagram" onclick="checkAnagram(document.getElementById('string1').value, document.getElementById('string2').value)" disabled>CHECK</button>
+<button id="buttonAnagram" class="animation" onclick="checkAnagram(document.getElementById('string1').value, document.getElementById('string2').value)" disabled>CHECK</button>
 
 <div id="constraints">
 
     <p></p>
     <h3>What's considered an anagram?</h3>
+
     <ul>
         <li>A string contains at least one character, which can be an upper or lower case letter, number, or symbol</li>
         <li>Spaces do not count as characters (i.e. 'abc' is an anagram of 'b ac')</li>
         <li>Uppercase and lowercase letters are considered to be the same letter (i.e. 'ABC' is an anagram of 'cba')</li>
     </ul>
-    
+
 </div>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<!-- script to animate the feedback -->
+<script>
+    $(document).ready(
+        function() {
+            $('.animation').click(
+                function(e) {
+                    e.preventDefault(); 
+                    $('#feedback').addClass(' tada animated').one(
+                        'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                        function() {
+                            $(this).removeClass('tada animated');
+                        }
+                    );
+                }
+            );
+        }
+    );
+
+</script>
