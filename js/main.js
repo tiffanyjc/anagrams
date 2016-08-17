@@ -54,7 +54,8 @@ function checkAnagram(string1, string2) {
     } else {
         var feedback = "They're not anagrams!"
         }
-
+    
+    
     document.getElementById('feedback').innerHTML = feedback; 
-
 }
+
